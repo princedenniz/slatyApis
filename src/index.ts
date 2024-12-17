@@ -13,21 +13,22 @@ const app = express();
 // app.use(express.json());
 
 // CORS Configuration
-const allowedOrigins = ['http://localhost:5173', 'https://slaty-admin-dashboard.vercel.app/']
-const testSly = (origin:any, callback:any) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true); // Allow request
-    } else {
-      callback(new Error('Not allowed by CORS')); // Block request
-    }
-  }
-app.use(
-  cors({
-    origin: testSly, // Allow frontend origins
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow specific HTTP methods
-    credentials: true, // Enable credentials (if needed for cookies/auth)
-  })
-);
+app.use(cors())
+// const allowedOrigins = ['http://localhost:5173', 'https://slaty-admin-dashboard.vercel.app/']
+// const testSly = (origin:any, callback:any) => {
+//     if (!origin || allowedOrigins.includes(origin)) {
+//       callback(null, true); // Allow request
+//     } else {
+//       callback(new Error('Not allowed by CORS')); // Block request
+//     }
+//   }
+// app.use(
+//   cors({
+//     origin: testSly, // Allow frontend origins
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow specific HTTP methods
+//     credentials: true, // Enable credentials (if needed for cookies/auth)
+//   })
+// );
 
 // Routes
 app.use('/api/users', userRoutes);
